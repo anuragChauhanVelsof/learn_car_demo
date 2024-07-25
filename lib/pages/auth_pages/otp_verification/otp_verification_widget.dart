@@ -290,7 +290,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                         return AlertDialog(
                                           title: const Text('Error'),
                                           content:
-                                              const Text('Something went wrong!'),
+                                              const Text('Something went worng!'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -336,8 +336,32 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                 );
                                 shouldSetState = true;
                                 if (_model.success!) {
-                                  await Future.delayed(
-                                      const Duration(milliseconds: 1500));
+                                  _model.isSigned = await actions.checkAuth();
+                                  shouldSetState = true;
+                                  _model.profile =
+                                      await ProfileTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'userId',
+                                      currentUserUid,
+                                    ),
+                                  );
+                                  shouldSetState = true;
+                                  if (_model.profile != null &&
+                                      (_model.profile)!.isNotEmpty) {
+                                    context.goNamed(
+                                      'Home',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 100),
+                                        ),
+                                      },
+                                    );
+                                  } else {
+                                    context.goNamed('ProfileDetails');
+                                  }
                                 } else {
                                   await showDialog(
                                     context: context,
@@ -358,22 +382,6 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                   );
                                   if (shouldSetState) setState(() {});
                                   return;
-                                }
-
-                                _model.isSigned = await actions.checkAuth();
-                                shouldSetState = true;
-                                _model.profile = await ProfileTable().queryRows(
-                                  queryFn: (q) => q.eq(
-                                    'userId',
-                                    currentUserUid,
-                                  ),
-                                );
-                                shouldSetState = true;
-                                if (_model.profile != null &&
-                                    (_model.profile)!.isNotEmpty) {
-                                  context.goNamed('Home');
-                                } else {
-                                  context.goNamed('ProfileDetails');
                                 }
 
                                 if (shouldSetState) setState(() {});
