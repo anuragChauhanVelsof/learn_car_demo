@@ -290,7 +290,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                         return AlertDialog(
                                           title: const Text('Error'),
                                           content:
-                                              const Text('Something went worng!'),
+                                              const Text('Something went wrong!'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
