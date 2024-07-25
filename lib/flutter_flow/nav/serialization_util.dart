@@ -207,6 +207,8 @@ dynamic deserializeParam<T>(
         switch (T) {
           case RtoRow:
             return RtoRow(data);
+          case QuestionsRow:
+            return QuestionsRow(data);
           case ProfileRow:
             return ProfileRow(data);
           default:

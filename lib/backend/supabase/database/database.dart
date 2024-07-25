@@ -6,4 +6,5 @@ export 'row.dart';
 export 'table.dart';
 
 export 'tables/rto.dart';
+export 'tables/questions.dart';
 export 'tables/profile.dart';

@@ -122,9 +122,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomeWidget(),
         ),
         FFRoute(
-          name: 'list',
-          path: '/list',
-          builder: (context, params) => const ListWidget(),
+          name: 'PracticeQuestions',
+          path: '/practiceQuestions',
+          builder: (context, params) => const PracticeQuestionsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

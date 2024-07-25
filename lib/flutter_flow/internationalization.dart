@@ -352,6 +352,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'SAUVEGARDER',
       'hi': 'बचाना',
     },
+    'sr5xwgpg': {
+      'en': 'Field is required',
+      'fr': 'Champ requis',
+      'hi': 'ये स्थान भरा जाना है',
+    },
+    'jvxnnfwg': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
+    },
+    'nryqgv4o': {
+      'en': 'Field is required',
+      'fr': 'Champ requis',
+      'hi': 'ये स्थान भरा जाना है',
+    },
+    '5hxj0l6i': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
+    },
+    'igb20yed': {
+      'en': 'Field is required',
+      'fr': '',
+      'hi': '',
+    },
+    'n5lrf8im': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
+    },
     '33g9lsch': {
       'en': 'Setup your profile',
       'fr': 'Configurez votre profil',
@@ -375,12 +405,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
       'hi': 'घर',
     },
-    'xffvaz2p': {
+    'qegbpa3s': {
       'en': 'Practice Questions',
       'fr': 'Questions pratiques',
       'hi': 'अभ्यास प्रश्न',
     },
-    'n3xfj3ld': {
+    '55oid4nz': {
+      'en': 'Test',
+      'fr': 'Test',
+      'hi': 'परीक्षा',
+    },
+    '0i8c142f': {
+      'en': 'Road Signs',
+      'fr': 'Panneaux routiers',
+      'hi': 'सड़क के संकेत',
+    },
+    'talc3os0': {
+      'en': 'Study',
+      'fr': 'Étude',
+      'hi': 'अध्ययन',
+    },
+    'y6fizwsy': {
       'en': 'Test History',
       'fr': 'Historique des tests',
       'hi': 'टेस्ट इतिहास',
@@ -391,67 +436,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'घर',
     },
   },
-  // list
+  // PracticeQuestions
   {
-    'w2q3dsvt': {
-      'en': 'Manage your team below.',
-      'fr': 'Gérez votre équipe ci-dessous.',
-      'hi': 'नीचे अपनी टीम का प्रबंधन करें.',
+    'q2rknp69': {
+      'en': 'Practice Questions',
+      'fr': 'Questions pratiques',
+      'hi': 'अभ्यास प्रश्न',
     },
-    '3i3y4m8u': {
-      'en': 'Random Name',
-      'fr': 'Nom aléatoire',
-      'hi': 'यादृच्छिक नाम',
-    },
-    '8zk5nmdq': {
-      'en': 'user@randomname.com',
-      'fr': 'utilisateur@nomaléatoire.com',
-      'hi': 'user@randomname.com',
-    },
-    'ilt18ax7': {
-      'en': 'Random Name',
-      'fr': 'Nom aléatoire',
-      'hi': 'यादृच्छिक नाम',
-    },
-    'um8qlyuw': {
-      'en': 'user@randomname.com',
-      'fr': 'utilisateur@nomaléatoire.com',
-      'hi': 'user@randomname.com',
-    },
-    'xtuolbj1': {
-      'en': 'Random Name',
-      'fr': 'Nom aléatoire',
-      'hi': 'यादृच्छिक नाम',
-    },
-    '4779wso8': {
-      'en': 'user@randomname.com',
-      'fr': 'utilisateur@nomaléatoire.com',
-      'hi': 'user@randomname.com',
-    },
-    'yt4d0wxp': {
-      'en': 'Random Name',
-      'fr': 'Nom aléatoire',
-      'hi': 'यादृच्छिक नाम',
-    },
-    'd0ueucbz': {
-      'en': 'user@randomname.com',
-      'fr': 'utilisateur@nomaléatoire.com',
-      'hi': 'user@randomname.com',
-    },
-    'mldg28vi': {
-      'en': 'Random Name',
-      'fr': 'Nom aléatoire',
-      'hi': 'यादृच्छिक नाम',
-    },
-    'kapzbwlz': {
-      'en': 'user@randomname.com',
-      'fr': 'utilisateur@nomaléatoire.com',
-      'hi': 'user@randomname.com',
-    },
-    '2eptcr3f': {
-      'en': 'My Team',
-      'fr': 'Mon équipe',
-      'hi': 'मेरी टीम',
+    '96cknqhh': {
+      'en': 'Answer',
+      'fr': 'Répondre',
+      'hi': 'उत्तर',
     },
     'gjfx8qws': {
       'en': 'Home',

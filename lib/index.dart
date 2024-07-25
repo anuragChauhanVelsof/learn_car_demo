@@ -9,4 +9,5 @@ export '/pages/auth_pages/otp_verification/otp_verification_widget.dart'
 export '/pages/auth_pages/profile_details/profile_details_widget.dart'
     show ProfileDetailsWidget;
 export '/pages/home/home_widget.dart' show HomeWidget;
-export '/list/list_widget.dart' show ListWidget;
+export '/pages/practice_questions/practice_questions_widget.dart'
+    show PracticeQuestionsWidget;

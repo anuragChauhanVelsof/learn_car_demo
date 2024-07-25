@@ -107,91 +107,97 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Hero(
-                    tag: 'logo',
-                    transitionOnUserGestures: true,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/Group_5222.png',
-                        width: 300.0,
-                        height: 200.0,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['imageOnPageLoadAnimation1']!),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: AnimatedDefaultTextStyle(
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Poppins',
-                            color: const Color(0xFF4378DB),
-                            fontSize: 32.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w800,
+    return Title(
+        title: 'SplashScreen',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
+              top: true,
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Hero(
+                        tag: 'logo',
+                        transitionOnUserGestures: true,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/Group_5222.png',
+                            width: 300.0,
+                            height: 200.0,
+                            fit: BoxFit.contain,
                           ),
-                      duration: const Duration(milliseconds: 750),
-                      curve: Curves.bounceOut,
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'qef27p0e' /* Learn Car */,
                         ),
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation1']!),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'asvy7gzc' /* Learn and Practice rules and r... */,
-                      ),
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Poppins',
-                            fontSize: 12.0,
-                            letterSpacing: 0.0,
+                      ).animateOnPageLoad(
+                          animationsMap['imageOnPageLoadAnimation1']!),
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: AnimatedDefaultTextStyle(
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    color: const Color(0xFF4378DB),
+                                    fontSize: 32.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                          duration: const Duration(milliseconds: 750),
+                          curve: Curves.bounceOut,
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'qef27p0e' /* Learn Car */,
+                            ),
                           ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation2']!),
-                  ),
-                  Hero(
-                    tag: 'image',
-                    transitionOnUserGestures: true,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/Group_5200.png',
-                        width: 300.0,
-                        fit: BoxFit.contain,
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation1']!),
                       ),
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['imageOnPageLoadAnimation2']!),
-                ],
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'asvy7gzc' /* Learn and Practice rules and r... */,
+                          ),
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 12.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation2']!),
+                      ),
+                      Hero(
+                        tag: 'image',
+                        transitionOnUserGestures: true,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/Group_5200.png',
+                            width: MediaQuery.sizeOf(context).width * 0.5,
+                            height: MediaQuery.sizeOf(context).height * 0.5,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['imageOnPageLoadAnimation2']!),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
