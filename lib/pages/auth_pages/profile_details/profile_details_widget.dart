@@ -84,7 +84,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'ProfileDetails',
+        title: 'Profile',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

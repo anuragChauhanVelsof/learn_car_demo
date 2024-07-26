@@ -117,7 +117,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Learn and Practice rules and regulation ofr\nCar Driving',
       'fr':
           'Apprenez et pratiquez les règles et réglementations de la conduite automobile',
-      'hi': 'कार ड्राइविंग के नियम और विनियमन सीखें और अभ्यास करें',
+      'hi': 'कार ड्राइविंग के नियम और विनियमन सीखें और उनका अभ्यास करें',
     },
     'gjfx8qws': {
       'en': 'Home',
@@ -154,7 +154,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'मैंने पढ़ लिया है और स्वीकार करता हूँ',
     },
     'l7zwnn4e': {
-      'en': 'tems & conditions',
+      'en': 'terms & conditions',
       'fr': 'termes et conditions',
       'hi': 'नियम एवं शर्तें',
     },
@@ -374,8 +374,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'igb20yed': {
       'en': 'Field is required',
-      'fr': '',
-      'hi': '',
+      'fr': 'Champ requis',
+      'hi': 'ये स्थान भरा जाना है',
     },
     'n5lrf8im': {
       'en': 'Please choose an option from the dropdown',
@@ -452,6 +452,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'fr': 'Maison',
       'hi': 'घर',
+    },
+  },
+  // TestQuestions
+  {
+    'dvfk200y': {
+      'en': 'Test',
+      'fr': 'Test',
+      'hi': 'परीक्षा',
+    },
+    'fo84dm7s': {
+      'en': 'Finish the test ',
+      'fr': 'Terminer le test',
+      'hi': 'परीक्षण समाप्त करें',
+    },
+    'i0acdmwj': {
+      'en': 'Home',
+      'fr': '',
+      'hi': '',
     },
   },
   // Test

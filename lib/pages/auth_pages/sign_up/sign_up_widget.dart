@@ -76,7 +76,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'SignUp',
+        title: 'Sign Up',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

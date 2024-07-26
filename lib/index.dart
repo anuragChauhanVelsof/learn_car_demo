@@ -11,3 +11,5 @@ export '/pages/auth_pages/profile_details/profile_details_widget.dart'
 export '/pages/home/home_widget.dart' show HomeWidget;
 export '/pages/practice_questions/practice_questions_widget.dart'
     show PracticeQuestionsWidget;
+export '/pages/test_questions/test_questions_widget.dart'
+    show TestQuestionsWidget;

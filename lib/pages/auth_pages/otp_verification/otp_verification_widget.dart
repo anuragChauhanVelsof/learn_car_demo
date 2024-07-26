@@ -57,7 +57,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'OtpVerification',
+        title: 'Otp',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

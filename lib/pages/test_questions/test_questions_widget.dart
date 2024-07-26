@@ -1,27 +1,29 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'practice_questions_model.dart';
-export 'practice_questions_model.dart';
+import 'test_questions_model.dart';
+export 'test_questions_model.dart';
 
-class PracticeQuestionsWidget extends StatefulWidget {
-  const PracticeQuestionsWidget({super.key});
+class TestQuestionsWidget extends StatefulWidget {
+  const TestQuestionsWidget({super.key});
 
   @override
-  State<PracticeQuestionsWidget> createState() =>
-      _PracticeQuestionsWidgetState();
+  State<TestQuestionsWidget> createState() => _TestQuestionsWidgetState();
 }
 
-class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
+class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
     with TickerProviderStateMixin {
-  late PracticeQuestionsModel _model;
+  late TestQuestionsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -30,7 +32,18 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PracticeQuestionsModel());
+    _model = createModel(context, () => TestQuestionsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.instantTimer = InstantTimer.periodic(
+        duration: const Duration(milliseconds: 1000),
+        callback: (timer) async {
+          _model.timerController.onStartTimer();
+        },
+        startImmediately: true,
+      );
+    });
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -115,7 +128,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primary,
+            backgroundColor: FlutterFlowTheme.of(context).warning,
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -129,10 +142,10 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
             ),
           );
         }
-        List<QuestionsRow> practiceQuestionsQuestionsRowList = snapshot.data!;
+        List<QuestionsRow> testQuestionsQuestionsRowList = snapshot.data!;
 
         return Title(
-            title: 'Practice',
+            title: 'Test',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () => _model.unfocusNode.canRequestFocus
@@ -140,7 +153,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                   : FocusScope.of(context).unfocus(),
               child: Scaffold(
                 key: scaffoldKey,
-                backgroundColor: FlutterFlowTheme.of(context).primary,
+                backgroundColor: FlutterFlowTheme.of(context).warning,
                 body: SafeArea(
                   top: true,
                   child: Align(
@@ -173,7 +186,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                     child: Icon(
                                       Icons.chevron_left,
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .primaryText,
                                       size: 35.0,
                                     ),
                                   ),
@@ -185,7 +198,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                             const AlignmentDirectional(0.0, 1.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'q2rknp69' /* Practice Questions */,
+                                            'dvfk200y' /* Test */,
                                           ),
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
@@ -194,7 +207,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                 fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -202,29 +215,30 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                       ),
                                     ],
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        await authManager.signOut();
-                                        GoRouter.of(context)
-                                            .clearRedirectLocation();
-
-                                        context.goNamedAuth(
-                                            'SplashScreen', context.mounted);
-                                      },
-                                      child: Icon(
-                                        Icons.align_horizontal_right_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        size: 24.0,
-                                      ),
+                                  FlutterFlowTimer(
+                                    initialTime: _model.timerInitialTimeMs,
+                                    getDisplayTime: (value) =>
+                                        StopWatchTimer.getDisplayTime(
+                                      value,
+                                      hours: false,
+                                      milliSecond: false,
                                     ),
+                                    controller: _model.timerController,
+                                    updateStateInterval:
+                                        const Duration(milliseconds: 1000),
+                                    onChanged:
+                                        (value, displayTime, shouldUpdate) {
+                                      _model.timerMilliseconds = value;
+                                      _model.timerValue = displayTime;
+                                      if (shouldUpdate) setState(() {});
+                                    },
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -320,7 +334,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                               const EdgeInsets.all(
                                                                   10.0),
                                                           child: Text(
-                                                            practiceQuestionsQuestionsRowList[
+                                                            testQuestionsQuestionsRowList[
                                                                     _model
                                                                         .index]
                                                                 .question,
@@ -336,12 +350,12 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                           ),
                                                         ),
                                                       ),
-                                                      if (practiceQuestionsQuestionsRowList[
+                                                      if (testQuestionsQuestionsRowList[
                                                                       _model
                                                                           .index]
                                                                   .image !=
                                                               null &&
-                                                          practiceQuestionsQuestionsRowList[
+                                                          testQuestionsQuestionsRowList[
                                                                       _model
                                                                           .index]
                                                                   .image !=
@@ -366,7 +380,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                                       milliseconds:
                                                                           500),
                                                               imageUrl:
-                                                                  practiceQuestionsQuestionsRowList[
+                                                                  testQuestionsQuestionsRowList[
                                                                           _model
                                                                               .index]
                                                                       .image!,
@@ -400,7 +414,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         .updateSelecedtAsnwersAtIndex(
                                                       _model.index,
                                                       (_) =>
-                                                          practiceQuestionsQuestionsRowList[
+                                                          testQuestionsQuestionsRowList[
                                                                   _model.index]
                                                               .optionA,
                                                     );
@@ -416,7 +430,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                       color: _model.correctAnswers[
                                                                   _model
                                                                       .index] ==
-                                                              practiceQuestionsQuestionsRowList[
+                                                              testQuestionsQuestionsRowList[
                                                                       _model
                                                                           .index]
                                                                   .optionA
@@ -444,14 +458,16 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         color: _model.selecedtAsnwers[
                                                                     _model
                                                                         .index] ==
-                                                                practiceQuestionsQuestionsRowList[
+                                                                testQuestionsQuestionsRowList[
                                                                         _model
                                                                             .index]
                                                                     .optionA
                                                             ? FlutterFlowTheme
                                                                     .of(context)
                                                                 .success
-                                                            : const Color(0x00000000),
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
                                                         width: 2.0,
                                                       ),
                                                     ),
@@ -459,7 +475,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                       padding:
                                                           const EdgeInsets.all(10.0),
                                                       child: Text(
-                                                        practiceQuestionsQuestionsRowList[
+                                                        testQuestionsQuestionsRowList[
                                                                 _model.index]
                                                             .optionA,
                                                         style:
@@ -496,7 +512,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         .updateSelecedtAsnwersAtIndex(
                                                       _model.index,
                                                       (_) =>
-                                                          practiceQuestionsQuestionsRowList[
+                                                          testQuestionsQuestionsRowList[
                                                                   _model.index]
                                                               .optionB,
                                                     );
@@ -516,7 +532,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         color: _model.correctAnswers[
                                                                     _model
                                                                         .index] ==
-                                                                practiceQuestionsQuestionsRowList[
+                                                                testQuestionsQuestionsRowList[
                                                                         _model
                                                                             .index]
                                                                     .optionB
@@ -533,7 +549,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                           color: _model.selecedtAsnwers[
                                                                       _model
                                                                           .index] ==
-                                                                  practiceQuestionsQuestionsRowList[
+                                                                  testQuestionsQuestionsRowList[
                                                                           _model
                                                                               .index]
                                                                       .optionB
@@ -550,7 +566,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         padding: const EdgeInsets.all(
                                                             10.0),
                                                         child: Text(
-                                                          practiceQuestionsQuestionsRowList[
+                                                          testQuestionsQuestionsRowList[
                                                                   _model.index]
                                                               .optionB,
                                                           style: FlutterFlowTheme
@@ -587,7 +603,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         .updateSelecedtAsnwersAtIndex(
                                                       _model.index,
                                                       (_) =>
-                                                          practiceQuestionsQuestionsRowList[
+                                                          testQuestionsQuestionsRowList[
                                                                   _model.index]
                                                               .optionC,
                                                     );
@@ -603,7 +619,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                       color: _model.correctAnswers[
                                                                   _model
                                                                       .index] ==
-                                                              practiceQuestionsQuestionsRowList[
+                                                              testQuestionsQuestionsRowList[
                                                                       _model
                                                                           .index]
                                                                   .optionC
@@ -631,14 +647,16 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                         color: _model.selecedtAsnwers[
                                                                     _model
                                                                         .index] ==
-                                                                practiceQuestionsQuestionsRowList[
+                                                                testQuestionsQuestionsRowList[
                                                                         _model
                                                                             .index]
                                                                     .optionC
                                                             ? FlutterFlowTheme
                                                                     .of(context)
                                                                 .success
-                                                            : const Color(0x00000000),
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
                                                         width: 2.0,
                                                       ),
                                                     ),
@@ -646,7 +664,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                       padding:
                                                           const EdgeInsets.all(10.0),
                                                       child: Text(
-                                                        practiceQuestionsQuestionsRowList[
+                                                        testQuestionsQuestionsRowList[
                                                                 _model.index]
                                                             .optionC,
                                                         style:
@@ -686,65 +704,65 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Expanded(
-                                              child: FFButtonWidget(
-                                                onPressed: () async {
-                                                  _model
-                                                      .updateCorrectAnswersAtIndex(
-                                                    _model.index,
-                                                    (_) =>
-                                                        practiceQuestionsQuestionsRowList[
-                                                                _model.index]
-                                                            .correctOption,
-                                                  );
-                                                  setState(() {});
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '96cknqhh' /* Answer */,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      const EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
+                                            if (_model.index != 0)
+                                              Expanded(
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    _model.index =
+                                                        _model.index +
+                                                            (_model.index != 0
+                                                                ? -1
+                                                                : 0);
+                                                    setState(() {});
+                                                  },
+                                                  text: FFLocalizations.of(
                                                           context)
-                                                      .secondaryBackground,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                  elevation: 3.0,
-                                                  borderSide: const BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                                      .getVariableText(
+                                                    enText: '< Previous',
+                                                    hiText: '< पिछला',
+                                                    frText: '< précédente',
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: const BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
                                             Expanded(
                                               child: FFButtonWidget(
                                                 onPressed: () async {
                                                   if (functions
                                                           .newCustomFunction(
                                                               _model.index) ==
-                                                      practiceQuestionsQuestionsRowList
+                                                      testQuestionsQuestionsRowList
                                                           .length) {
                                                     context.safePop();
                                                   } else {
@@ -753,14 +771,14 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                     _model.addToSelecedtAsnwers(
                                                         '\"\"');
                                                     _model.addToCorrectAnswers(
-                                                        '-');
+                                                        '\"\"');
                                                     setState(() {});
                                                   }
                                                 },
                                                 text: functions
                                                             .newCustomFunction(
                                                                 _model.index) ==
-                                                        practiceQuestionsQuestionsRowList
+                                                        testQuestionsQuestionsRowList
                                                             .length
                                                     ? FFLocalizations.of(
                                                             context)
@@ -772,9 +790,9 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                     : FFLocalizations.of(
                                                             context)
                                                         .getVariableText(
-                                                        enText: 'NEXT',
-                                                        hiText: 'अगला',
-                                                        frText: 'SUIVANTE',
+                                                        enText: 'NEXT >',
+                                                        hiText: 'अगला >',
+                                                        frText: 'SUIVANTE >',
                                                       ),
                                                 options: FFButtonOptions(
                                                   height: 40.0,
@@ -808,6 +826,37 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                               ),
                                             ),
                                           ].divide(const SizedBox(width: 20.0)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'fo84dm7s' /* Finish the test  */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                letterSpacing: 0.0,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
                                         ),
                                       ),
                                     ),

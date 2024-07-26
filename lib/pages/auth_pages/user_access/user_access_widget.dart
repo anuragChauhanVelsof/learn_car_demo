@@ -36,7 +36,7 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'UserAccess',
+        title: 'Auth',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -110,7 +110,27 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                                   30.0, 20.0, 30.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  context.pushNamed('Login');
+                                  if (_model.checkboxValue!) {
+                                    context.pushNamed('Login');
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: const Text('Read Terms&Conditions'),
+                                          content: const Text(
+                                              'To countinue please read terms and condition first.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   '8pjsmffv' /* Login */,
@@ -147,7 +167,27 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                                   30.0, 10.0, 30.0, 10.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  context.pushNamed('SignUp');
+                                  if (_model.checkboxValue!) {
+                                    context.pushNamed('SignUp');
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: const Text('Read Terms&Conditions'),
+                                          content: const Text(
+                                              'To countinue please read terms and condition first.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'dodp8sux' /* REGISTER */,
@@ -238,7 +278,7 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                                       TextSpan(
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          'l7zwnn4e' /* tems & conditions */,
+                                          'l7zwnn4e' /* terms & conditions */,
                                         ),
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
@@ -264,7 +304,7 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
                                 'assets/images/parking.png',
-                                width: MediaQuery.sizeOf(context).width,
+                                width: 300.0,
                                 fit: BoxFit.cover,
                                 alignment: const Alignment(0.0, 0.0),
                               ),

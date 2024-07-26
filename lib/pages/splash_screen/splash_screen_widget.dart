@@ -108,7 +108,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'SplashScreen',
+        title: 'Learn Car',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -185,8 +185,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/Group_5200.png',
-                            width: MediaQuery.sizeOf(context).width * 0.5,
-                            height: MediaQuery.sizeOf(context).height * 0.5,
+                            width: 300.0,
                             fit: BoxFit.fill,
                           ),
                         ),
