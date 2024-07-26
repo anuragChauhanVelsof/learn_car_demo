@@ -117,7 +117,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Learn and Practice rules and regulation ofr\nCar Driving',
       'fr':
           'Apprenez et pratiquez les règles et réglementations de la conduite automobile',
-      'hi': 'कार ड्राइविंग के नियम और विनियमन सीखें और उनका अभ्यास करें',
+      'hi': 'कार ड्राइविंग के नियम और विनियमन सीखें और अभ्यास करें',
     },
     'gjfx8qws': {
       'en': 'Home',
@@ -171,6 +171,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Numéro de téléphone',
       'hi': 'फ़ोन नंबर',
     },
+    '7e3lsrnc': {
+      'en': 'Field is required',
+      'fr': 'Champ requis',
+      'hi': 'ये स्थान भरा जाना है',
+    },
+    'nksr3b94': {
+      'en': 'Please enter a valid phone number',
+      'fr': '',
+      'hi': '',
+    },
+    '1kkysqtx': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
+    },
     '88fktxja': {
       'en': 'GET OTP',
       'fr': 'OBTENIR OTP',
@@ -209,6 +224,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Phone number',
       'fr': 'Numéro de téléphone',
       'hi': 'फ़ोन नंबर',
+    },
+    '7e3lsrnc': {
+      'en': 'Field is required',
+      'fr': 'Champ requis',
+      'hi': 'ये स्थान भरा जाना है',
+    },
+    'rxlq0jy4': {
+      'en': 'Please enter a valid phone number',
+      'fr': '',
+      'hi': '',
+    },
+    '1kkysqtx': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
     },
     'ua2dt0bp': {
       'en': 'GET OTP',
@@ -460,6 +490,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Test',
       'fr': 'Test',
       'hi': 'परीक्षा',
+    },
+    'dvm3pz74': {
+      'en': '',
+      'fr': '',
+      'hi': '',
+    },
+    'uqqoyhl4': {
+      'en': '/',
+      'fr': '',
+      'hi': '',
     },
     'fo84dm7s': {
       'en': 'Finish the test ',

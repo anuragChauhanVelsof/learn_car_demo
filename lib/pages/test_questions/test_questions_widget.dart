@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'test_questions_model.dart';
 export 'test_questions_model.dart';
 
@@ -266,6 +267,102 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          flex: 2,
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: LinearPercentIndicator(
+                                              percent:
+                                                  functions.newCustomFunction2(
+                                                      _model.index,
+                                                      testQuestionsQuestionsRowList
+                                                          .length)!,
+                                              lineHeight: 12.0,
+                                              animation: true,
+                                              animateFromLastPercent: true,
+                                              progressColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .warning,
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent4,
+                                              padding: EdgeInsets.zero,
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(1.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: RichText(
+                                                textScaler:
+                                                    MediaQuery.of(context)
+                                                        .textScaler,
+                                                text: TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text: functions
+                                                          .newCustomFunction(
+                                                              _model.index)
+                                                          .toString(),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                    ),
+                                                    TextSpan(
+                                                      text: FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'uqqoyhl4' /* / */,
+                                                      ),
+                                                      style: const TextStyle(),
+                                                    ),
+                                                    TextSpan(
+                                                      text:
+                                                          testQuestionsQuestionsRowList
+                                                              .length
+                                                              .toString(),
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .warning,
+                                                      ),
+                                                    )
+                                                  ],
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     Expanded(
                                       child: Container(
                                         width:
@@ -384,8 +481,9 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                                                           _model
                                                                               .index]
                                                                       .image!,
-                                                              width: 300.0,
-                                                              height: 200.0,
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 150.0,
                                                               fit: BoxFit
                                                                   .contain,
                                                             ),
@@ -518,18 +616,42 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                                     );
                                                     setState(() {});
                                                   },
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
+                                                  child: Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        1.0,
+                                                    height: 50.0,
+                                                    decoration: BoxDecoration(
+                                                      color: _model.correctAnswers[
+                                                                  _model
+                                                                      .index] ==
+                                                              testQuestionsQuestionsRowList[
+                                                                      _model
+                                                                          .index]
+                                                                  .optionB
+                                                          ? FlutterFlowTheme.of(
                                                                   context)
-                                                              .width *
-                                                          1.0,
-                                                      height: 50.0,
-                                                      decoration: BoxDecoration(
-                                                        color: _model.correctAnswers[
+                                                              .secondary
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryBackground,
+                                                      boxShadow: const [
+                                                        BoxShadow(
+                                                          blurRadius: 4.0,
+                                                          color:
+                                                              Color(0x33000000),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            2.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      border: Border.all(
+                                                        color: _model.selecedtAsnwers[
                                                                     _model
                                                                         .index] ==
                                                                 testQuestionsQuestionsRowList[
@@ -538,47 +660,28 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                                                     .optionB
                                                             ? FlutterFlowTheme
                                                                     .of(context)
-                                                                .secondary
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
-                                                        border: Border.all(
-                                                          color: _model.selecedtAsnwers[
-                                                                      _model
-                                                                          .index] ==
-                                                                  testQuestionsQuestionsRowList[
-                                                                          _model
-                                                                              .index]
-                                                                      .optionB
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .success
-                                                              : const Color(
-                                                                  0x00000000),
-                                                          width: 2.0,
-                                                        ),
+                                                                .success
+                                                            : const Color(0x00000000),
+                                                        width: 2.0,
                                                       ),
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(
-                                                            10.0),
-                                                        child: Text(
-                                                          testQuestionsQuestionsRowList[
-                                                                  _model.index]
-                                                              .optionB,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(10.0),
+                                                      child: Text(
+                                                        testQuestionsQuestionsRowList[
+                                                                _model.index]
+                                                            .optionB,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ),

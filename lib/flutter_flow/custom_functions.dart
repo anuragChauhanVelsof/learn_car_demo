@@ -14,3 +14,10 @@ import '/auth/supabase_auth/auth_util.dart';
 int? newCustomFunction(int? index) {
   return index! + 1;
 }
+
+double? newCustomFunction2(
+  int? index,
+  int? size,
+) {
+  return (index! + 1) / size!;
+}

@@ -502,18 +502,42 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                     );
                                                     setState(() {});
                                                   },
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
+                                                  child: Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        1.0,
+                                                    height: 50.0,
+                                                    decoration: BoxDecoration(
+                                                      color: _model.correctAnswers[
+                                                                  _model
+                                                                      .index] ==
+                                                              practiceQuestionsQuestionsRowList[
+                                                                      _model
+                                                                          .index]
+                                                                  .optionB
+                                                          ? FlutterFlowTheme.of(
                                                                   context)
-                                                              .width *
-                                                          1.0,
-                                                      height: 50.0,
-                                                      decoration: BoxDecoration(
-                                                        color: _model.correctAnswers[
+                                                              .secondary
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryBackground,
+                                                      boxShadow: const [
+                                                        BoxShadow(
+                                                          blurRadius: 4.0,
+                                                          color:
+                                                              Color(0x33000000),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            2.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      border: Border.all(
+                                                        color: _model.selecedtAsnwers[
                                                                     _model
                                                                         .index] ==
                                                                 practiceQuestionsQuestionsRowList[
@@ -522,47 +546,28 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
                                                                     .optionB
                                                             ? FlutterFlowTheme
                                                                     .of(context)
-                                                                .secondary
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
-                                                        border: Border.all(
-                                                          color: _model.selecedtAsnwers[
-                                                                      _model
-                                                                          .index] ==
-                                                                  practiceQuestionsQuestionsRowList[
-                                                                          _model
-                                                                              .index]
-                                                                      .optionB
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .success
-                                                              : const Color(
-                                                                  0x00000000),
-                                                          width: 2.0,
-                                                        ),
+                                                                .success
+                                                            : const Color(0x00000000),
+                                                        width: 2.0,
                                                       ),
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(
-                                                            10.0),
-                                                        child: Text(
-                                                          practiceQuestionsQuestionsRowList[
-                                                                  _model.index]
-                                                              .optionB,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(10.0),
+                                                      child: Text(
+                                                        practiceQuestionsQuestionsRowList[
+                                                                _model.index]
+                                                            .optionB,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ),

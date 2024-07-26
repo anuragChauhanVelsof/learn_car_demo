@@ -139,75 +139,83 @@ class _LoginWidgetState extends State<LoginWidget>
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    30.0, 30.0, 30.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.textController,
-                                  focusNode: _model.textFieldFocusNode,
-                                  autofocus: true,
-                                  textCapitalization: TextCapitalization.none,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText:
-                                        FFLocalizations.of(context).getText(
-                                      'zuhkabk0' /* Phone number */,
+                              Form(
+                                key: _model.formKey,
+                                autovalidateMode: AutovalidateMode.disabled,
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      30.0, 30.0, 30.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController,
+                                    focusNode: _model.textFieldFocusNode,
+                                    autofocus: true,
+                                    textCapitalization: TextCapitalization.none,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          FFLocalizations.of(context).getText(
+                                        'zuhkabk0' /* Phone number */,
+                                      ),
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      alignLabelWithHint: true,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
                                     ),
-                                    labelStyle: FlutterFlowTheme.of(context)
+                                    style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           letterSpacing: 0.0,
                                         ),
-                                    alignLabelWithHint: true,
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
+                                    keyboardType: TextInputType.phone,
+                                    validator: _model.textControllerValidator
+                                        .asValidator(context),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  keyboardType: TextInputType.phone,
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
                                 ),
                               ),
                               Align(
@@ -229,6 +237,13 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   30.0, 8.0, 30.0, 10.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
+                                              if (_model.formKey.currentState ==
+                                                      null ||
+                                                  !_model.formKey.currentState!
+                                                      .validate()) {
+                                                return;
+                                              }
+
                                               context.pushNamed(
                                                 'OtpVerification',
                                                 queryParameters: {
