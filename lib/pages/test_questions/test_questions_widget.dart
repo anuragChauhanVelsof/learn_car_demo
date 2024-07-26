@@ -267,101 +267,112 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 2,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
-                                            child: LinearPercentIndicator(
-                                              percent:
-                                                  functions.newCustomFunction2(
-                                                      _model.index,
-                                                      testQuestionsQuestionsRowList
-                                                          .length)!,
-                                              lineHeight: 12.0,
-                                              animation: true,
-                                              animateFromLastPercent: true,
-                                              progressColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .warning,
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              padding: EdgeInsets.zero,
-                                            ),
-                                          ),
-                                        ),
-                                        Flexible(
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(1.0, 0.0),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 2,
                                             child: Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: RichText(
-                                                textScaler:
-                                                    MediaQuery.of(context)
-                                                        .textScaler,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: functions
-                                                          .newCustomFunction(
-                                                              _model.index)
-                                                          .toString(),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Roboto',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                    ),
-                                                    TextSpan(
-                                                      text: FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'uqqoyhl4' /* / */,
-                                                      ),
-                                                      style: const TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text:
-                                                          testQuestionsQuestionsRowList
-                                                              .length
-                                                              .toString(),
-                                                      style: TextStyle(
-                                                        color:
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: LinearPercentIndicator(
+                                                percent: functions
+                                                    .newCustomFunction2(
+                                                        _model.index,
+                                                        testQuestionsQuestionsRowList
+                                                            .length)!,
+                                                lineHeight: 12.0,
+                                                animation: true,
+                                                animateFromLastPercent: true,
+                                                progressColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .warning,
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                                padding: EdgeInsets.zero,
+                                              ),
+                                            ),
+                                          ),
+                                          Flexible(
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  1.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: RichText(
+                                                  textScaler:
+                                                      MediaQuery.of(context)
+                                                          .textScaler,
+                                                  text: TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text: functions
+                                                            .newCustomFunction(
+                                                                _model.index)
+                                                            .toString(),
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .warning,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
                                                       ),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
+                                                      TextSpan(
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'uqqoyhl4' /* / */,
+                                                        ),
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
                                                       ),
+                                                      TextSpan(
+                                                        text:
+                                                            testQuestionsQuestionsRowList
+                                                                .length
+                                                                .toString(),
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .warning,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                     Expanded(
                                       child: Container(
