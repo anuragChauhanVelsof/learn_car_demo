@@ -231,7 +231,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    final datePickedDate =
+                                    final datePicked1Date =
                                         await showDatePicker(
                                       context: context,
                                       initialDate: getCurrentTimestamp,
@@ -274,18 +274,18 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                       },
                                     );
 
-                                    if (datePickedDate != null) {
+                                    if (datePicked1Date != null) {
                                       safeSetState(() {
-                                        _model.datePicked = DateTime(
-                                          datePickedDate.year,
-                                          datePickedDate.month,
-                                          datePickedDate.day,
+                                        _model.datePicked1 = DateTime(
+                                          datePicked1Date.year,
+                                          datePicked1Date.month,
+                                          datePicked1Date.day,
                                         );
                                       });
                                     }
                                     setState(() {
                                       _model.dobTextController?.text =
-                                          _model.datePicked!.toString();
+                                          _model.datePicked1!.toString();
                                       _model.dobTextController?.selection =
                                           TextSelection.collapsed(
                                               offset: _model.dobTextController!
@@ -300,6 +300,63 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                       child: TextFormField(
                                         controller: _model.dobTextController,
                                         focusNode: _model.dobFocusNode,
+                                        onFieldSubmitted: (_) async {
+                                          final datePicked2Date =
+                                              await showDatePicker(
+                                            context: context,
+                                            initialDate: getCurrentTimestamp,
+                                            firstDate: DateTime(1900),
+                                            lastDate: getCurrentTimestamp,
+                                            builder: (context, child) {
+                                              return wrapInMaterialDatePickerTheme(
+                                                context,
+                                                child!,
+                                                headerBackgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                headerForegroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                headerTextStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 32.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                pickerBackgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                pickerForegroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                selectedDateTimeBackgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                selectedDateTimeForegroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                actionButtonForegroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                iconSize: 24.0,
+                                              );
+                                            },
+                                          );
+
+                                          if (datePicked2Date != null) {
+                                            safeSetState(() {
+                                              _model.datePicked2 = DateTime(
+                                                datePicked2Date.year,
+                                                datePicked2Date.month,
+                                                datePicked2Date.day,
+                                              );
+                                            });
+                                          }
+                                        },
                                         autofocus: true,
                                         readOnly: true,
                                         obscureText: false,
@@ -715,7 +772,8 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                                         .validate()) {
                                                   return;
                                                 }
-                                                if (_model.datePicked == null) {
+                                                if (_model.datePicked1 ==
+                                                    null) {
                                                   return;
                                                 }
                                                 if (_model
@@ -744,7 +802,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                                       ?.toString(),
                                                   'dob':
                                                       supaSerialize<DateTime>(
-                                                          _model.datePicked),
+                                                          _model.datePicked1),
                                                 });
                                                 if (_model.emailTextController
                                                     .text.isEmpty) {

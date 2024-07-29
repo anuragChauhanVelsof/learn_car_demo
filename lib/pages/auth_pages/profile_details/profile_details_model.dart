@@ -27,7 +27,7 @@ class ProfileDetailsModel extends FlutterFlowModel<ProfileDetailsWidget> {
     return null;
   }
 
-  DateTime? datePicked;
+  DateTime? datePicked1;
   // State field(s) for Dob widget.
   FocusNode? dobFocusNode;
   TextEditingController? dobTextController;
@@ -42,6 +42,7 @@ class ProfileDetailsModel extends FlutterFlowModel<ProfileDetailsWidget> {
     return null;
   }
 
+  DateTime? datePicked2;
   // State field(s) for Genderdropdown widget.
   String? genderdropdownValue;
   FormFieldController<String>? genderdropdownValueController;
