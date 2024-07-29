@@ -272,6 +272,51 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                         _model.timerValue = displayTime;
                                         if (shouldUpdate) setState(() {});
                                       },
+                                      onEnded: () async {
+                                        context.pushNamed(
+                                          'Result',
+                                          queryParameters: {
+                                            'score': serializeParam(
+                                              functions.getScoresString(
+                                                  testQuestionsQuestionsRowList
+                                                      .toList(),
+                                                  _model.selecedtAsnwers
+                                                      .toList()),
+                                              ParamType.String,
+                                            ),
+                                            'time': serializeParam(
+                                              functions.getTimeUsed(
+                                                  _model.timerMilliseconds),
+                                              ParamType.String,
+                                            ),
+                                            'status': serializeParam(
+                                              functions.getTestResult(
+                                                  testQuestionsQuestionsRowList
+                                                      .toList(),
+                                                  _model.selecedtAsnwers
+                                                      .toList()),
+                                              ParamType.bool,
+                                            ),
+                                            'porgressValue': serializeParam(
+                                              functions.getTestResultProgressValue(
+                                                  testQuestionsQuestionsRowList
+                                                      .toList(),
+                                                  _model.selecedtAsnwers
+                                                      .toList()),
+                                              ParamType.double,
+                                            ),
+                                            'progressPercentage':
+                                                serializeParam(
+                                              functions.getTestResultPercentage(
+                                                  testQuestionsQuestionsRowList
+                                                      .toList(),
+                                                  _model.selecedtAsnwers
+                                                      .toList()),
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall

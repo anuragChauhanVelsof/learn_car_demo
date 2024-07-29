@@ -116,8 +116,8 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                   Align(
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          16.0, 12.0, 16.0, 12.0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         constraints: const BoxConstraints(
@@ -143,7 +143,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                         ),
                         child: Form(
                           key: _model.formKey,
-                          autovalidateMode: AutovalidateMode.always,
+                          autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
@@ -155,7 +155,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                 children: [
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 30.0, 8.0, 0.0),
+                                        8.0, 10.0, 8.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.nameTextController,
                                       focusNode: _model.nameFocusNode,
@@ -742,7 +742,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                     alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 16.0, 24.0, 16.0),
+                                          24.0, 0.0, 24.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
