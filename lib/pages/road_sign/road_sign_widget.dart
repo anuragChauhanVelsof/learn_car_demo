@@ -189,7 +189,21 @@ class _RoadSignWidgetState extends State<RoadSignWidget>
                                         title: listViewRoadSignsRow.title!,
                                         leadingIcon: true,
                                         id: listViewRoadSignsRow.id,
-                                        onTapAction: () async {},
+                                        onTapAction: () async {
+                                          context.pushNamed(
+                                            'signs',
+                                            queryParameters: {
+                                              'title': serializeParam(
+                                                listViewRoadSignsRow.title,
+                                                ParamType.String,
+                                              ),
+                                              'id': serializeParam(
+                                                listViewRoadSignsRow.id,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
                                       );
                                     },
                                   );
