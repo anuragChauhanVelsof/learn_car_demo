@@ -159,7 +159,7 @@ class _SignsWidgetState extends State<SignsWidget>
                               child: FutureBuilder<List<AllSignsRow>>(
                                 future: AllSignsTable().queryRows(
                                   queryFn: (q) => q.eq(
-                                    'id',
+                                    'sign_id',
                                     widget.id,
                                   ),
                                 ),
