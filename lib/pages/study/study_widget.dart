@@ -219,7 +219,7 @@ class _StudyWidgetState extends State<StudyWidget>
                                               title: listViewStudyRow.title!,
                                               duration: _model.selectedVideo ==
                                                       listViewStudyRow.videoUrl
-                                                  ? 'Playing Vidoe'
+                                                  ? 'Playing Video'
                                                   : listViewStudyRow.duration!,
                                             ),
                                           );
