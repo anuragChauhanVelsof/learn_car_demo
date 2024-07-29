@@ -27,6 +27,21 @@ class ProfileDetailsModel extends FlutterFlowModel<ProfileDetailsWidget> {
     return null;
   }
 
+  DateTime? datePicked;
+  // State field(s) for Dob widget.
+  FocusNode? dobFocusNode;
+  TextEditingController? dobTextController;
+  String? Function(BuildContext, String?)? dobTextControllerValidator;
+  String? _dobTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'h1smf985' /* Field is required */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for Genderdropdown widget.
   String? genderdropdownValue;
   FormFieldController<String>? genderdropdownValueController;
@@ -68,13 +83,13 @@ class ProfileDetailsModel extends FlutterFlowModel<ProfileDetailsWidget> {
   // State field(s) for RtoDropdown widget.
   int? rtoDropdownValue;
   FormFieldController<int>? rtoDropdownValueController;
-  DateTime? datePicked;
   // Stores action output result for [Backend Call - Insert Row] action in LoginButton widget.
   ProfileRow? done;
 
   @override
   void initState(BuildContext context) {
     nameTextControllerValidator = _nameTextControllerValidator;
+    dobTextControllerValidator = _dobTextControllerValidator;
     emailTextControllerValidator = _emailTextControllerValidator;
     addressTextControllerValidator = _addressTextControllerValidator;
   }
@@ -84,6 +99,9 @@ class ProfileDetailsModel extends FlutterFlowModel<ProfileDetailsWidget> {
     unfocusNode.dispose();
     nameFocusNode?.dispose();
     nameTextController?.dispose();
+
+    dobFocusNode?.dispose();
+    dobTextController?.dispose();
 
     emailFocusNode?.dispose();
     emailTextController?.dispose();

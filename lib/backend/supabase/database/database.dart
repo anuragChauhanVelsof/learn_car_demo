@@ -7,4 +7,8 @@ export 'table.dart';
 
 export 'tables/rto.dart';
 export 'tables/questions.dart';
+export 'tables/study.dart';
+export 'tables/road_signs.dart';
+export 'tables/test_history.dart';
 export 'tables/profile.dart';
+export 'tables/all_signs.dart';

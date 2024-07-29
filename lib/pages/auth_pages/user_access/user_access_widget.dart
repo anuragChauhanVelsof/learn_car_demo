@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'user_access_model.dart';
 export 'user_access_model.dart';
 
@@ -61,8 +62,8 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.asset(
                               'assets/images/Group_5222.png',
-                              width: 300.0,
-                              height: 200.0,
+                              width: 100.0,
+                              height: 100.0,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -116,17 +117,20 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: const Text('Read Terms&Conditions'),
-                                          content: const Text(
-                                              'To countinue please read terms and condition first.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            title:
+                                                const Text('Read Terms&Conditions'),
+                                            content: const Text(
+                                                'To countinue please read terms and condition first.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
                                         );
                                       },
                                     );
@@ -173,17 +177,20 @@ class _UserAccessWidgetState extends State<UserAccessWidget> {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: const Text('Read Terms&Conditions'),
-                                          content: const Text(
-                                              'To countinue please read terms and condition first.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            title:
+                                                const Text('Read Terms&Conditions'),
+                                            content: const Text(
+                                                'To countinue please read terms and condition first.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
                                         );
                                       },
                                     );

@@ -10,6 +10,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'profile_details_model.dart';
 export 'profile_details_model.dart';
 
@@ -46,6 +47,9 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
 
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
+
+    _model.dobTextController ??= TextEditingController();
+    _model.dobFocusNode ??= FocusNode();
 
     _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
@@ -219,6 +223,158 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                     validator: _model
                                         .nameTextControllerValidator
                                         .asValidator(context),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    final datePickedDate =
+                                        await showDatePicker(
+                                      context: context,
+                                      initialDate: getCurrentTimestamp,
+                                      firstDate: DateTime(1900),
+                                      lastDate: getCurrentTimestamp,
+                                      builder: (context, child) {
+                                        return wrapInMaterialDatePickerTheme(
+                                          context,
+                                          child!,
+                                          headerBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          headerForegroundColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          headerTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .override(
+                                                    fontFamily: 'Poppins',
+                                                    fontSize: 32.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                          pickerBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          pickerForegroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          selectedDateTimeBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          selectedDateTimeForegroundColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          actionButtonForegroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          iconSize: 24.0,
+                                        );
+                                      },
+                                    );
+
+                                    if (datePickedDate != null) {
+                                      safeSetState(() {
+                                        _model.datePicked = DateTime(
+                                          datePickedDate.year,
+                                          datePickedDate.month,
+                                          datePickedDate.day,
+                                        );
+                                      });
+                                    }
+                                    setState(() {
+                                      _model.dobTextController?.text =
+                                          _model.datePicked!.toString();
+                                      _model.dobTextController?.selection =
+                                          TextSelection.collapsed(
+                                              offset: _model.dobTextController!
+                                                  .text.length);
+                                    });
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 10.0, 8.0, 0.0),
+                                      child: TextFormField(
+                                        controller: _model.dobTextController,
+                                        focusNode: _model.dobFocusNode,
+                                        autofocus: true,
+                                        readOnly: true,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'h7a7863q' /* DOB */,
+                                          ),
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        validator: _model
+                                            .dobTextControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Align(
@@ -536,99 +692,6 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        final datePickedDate =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: getCurrentTimestamp,
-                                          firstDate: DateTime(1900),
-                                          lastDate: getCurrentTimestamp,
-                                          builder: (context, child) {
-                                            return wrapInMaterialDatePickerTheme(
-                                              context,
-                                              child!,
-                                              headerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              headerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              headerTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 32.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                              pickerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              pickerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              selectedDateTimeBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              selectedDateTimeForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              actionButtonForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconSize: 24.0,
-                                            );
-                                          },
-                                        );
-
-                                        if (datePickedDate != null) {
-                                          safeSetState(() {
-                                            _model.datePicked = DateTime(
-                                              datePickedDate.year,
-                                              datePickedDate.month,
-                                              datePickedDate.day,
-                                            );
-                                          });
-                                        }
-                                      },
-                                      text: FFLocalizations.of(context).getText(
-                                        'b8ynli2u' /* Select DOB */,
-                                      ),
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 16.0, 24.0, 16.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -652,6 +715,9 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                                         .validate()) {
                                                   return;
                                                 }
+                                                if (_model.datePicked == null) {
+                                                  return;
+                                                }
                                                 if (_model
                                                         .genderdropdownValue ==
                                                     null) {
@@ -659,9 +725,6 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                                 }
                                                 if (_model.rtoDropdownValue ==
                                                     null) {
-                                                  return;
-                                                }
-                                                if (_model.datePicked == null) {
                                                   return;
                                                 }
                                                 _model.done =
@@ -707,19 +770,21 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                                   context: context,
                                                   builder:
                                                       (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title:
-                                                          const Text('Successfull'),
-                                                      content: const Text(
-                                                          'Accoutn Successfully Created'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        title:
+                                                            const Text('Successfull'),
+                                                        content: const Text(
+                                                            'Accoutn Successfully Created'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                 );

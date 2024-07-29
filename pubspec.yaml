@@ -51,6 +51,7 @@ dependencies:
   path_provider_platform_interface: 2.1.2
   percent_indicator: 4.2.2
   pin_code_fields: 8.0.1
+  pointer_interceptor: 0.10.1
   postgrest: 1.5.2
   provider: 6.1.2
   realtime_client: 1.4.0
@@ -73,10 +74,16 @@ dependencies:
   url_launcher_android: 6.3.0
   url_launcher_ios: 6.2.5
   url_launcher_platform_interface: 2.3.2
+  uuid: ^4.0.0
   webview_flutter: 4.7.0
   webview_flutter_android: 3.15.0
   webview_flutter_platform_interface: 2.10.0
   webview_flutter_wkwebview: 3.12.0
+  webviewx_plus: 0.5.0
+  youtube_player_iframe: 
+    git:
+      url: https://github.com/FlutterFlow/youtube_player_flutter.git
+      path: packages/youtube_player_iframe
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -85,6 +92,7 @@ dependencies:
 
 dependency_overrides:
   http: 1.2.1
+  pointer_interceptor: 0.10.1
   rxdart: 0.27.7
   uuid: ^4.0.0
 

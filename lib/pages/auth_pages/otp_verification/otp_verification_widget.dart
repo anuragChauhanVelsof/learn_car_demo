@@ -8,6 +8,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'otp_verification_model.dart';
 export 'otp_verification_model.dart';
 
@@ -102,8 +103,8 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                   borderRadius: BorderRadius.circular(4.0),
                                   child: Image.asset(
                                     'assets/images/Vector.png',
-                                    width: 30.0,
-                                    height: 30.0,
+                                    width: 48.0,
+                                    height: 48.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -276,18 +277,20 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: const Text('Pleae wait...'),
-                                              content: Text(
-                                                  'Wait for ${_model.timerValue} s'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                title: const Text('Pleae wait...'),
+                                                content: Text(
+                                                    'Wait for ${_model.timerValue} s'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         );
@@ -299,18 +302,20 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: const Text('Sent'),
-                                              content: const Text(
-                                                  'Please enter the otp sent to yuor phone.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                title: const Text('Sent'),
+                                                content: const Text(
+                                                    'Please enter the otp sent to yuor phone.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         );
@@ -318,18 +323,20 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: const Text('Error'),
-                                              content:
-                                                  const Text('Something went worng!'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                title: const Text('Error'),
+                                                content: const Text(
+                                                    'Something went worng!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         );
@@ -379,17 +386,20 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Error'),
-                                            content: const Text(
-                                                'Please enter the correct OTP'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              title: const Text('Error'),
+                                              content: const Text(
+                                                  'Please enter the correct OTP'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
                                           );
                                         },
                                       );

@@ -209,8 +209,16 @@ dynamic deserializeParam<T>(
             return RtoRow(data);
           case QuestionsRow:
             return QuestionsRow(data);
+          case StudyRow:
+            return StudyRow(data);
+          case RoadSignsRow:
+            return RoadSignsRow(data);
+          case TestHistoryRow:
+            return TestHistoryRow(data);
           case ProfileRow:
             return ProfileRow(data);
+          case AllSignsRow:
+            return AllSignsRow(data);
           default:
             return null;
         }

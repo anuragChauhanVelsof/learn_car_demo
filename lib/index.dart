@@ -13,3 +13,8 @@ export '/pages/practice_questions/practice_questions_widget.dart'
     show PracticeQuestionsWidget;
 export '/pages/test_questions/test_questions_widget.dart'
     show TestQuestionsWidget;
+export '/pages/result/result_widget.dart' show ResultWidget;
+export '/pages/road_sign/road_sign_widget.dart' show RoadSignWidget;
+export '/pages/signs/signs_widget.dart' show SignsWidget;
+export '/pages/study/study_widget.dart' show StudyWidget;
+export '/pages/history/history_widget.dart' show HistoryWidget;

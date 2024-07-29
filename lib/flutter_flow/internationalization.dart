@@ -117,7 +117,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Learn and Practice rules and regulation ofr\nCar Driving',
       'fr':
           'Apprenez et pratiquez les règles et réglementations de la conduite automobile',
-      'hi': 'कार ड्राइविंग के नियम और विनियमन सीखें और अभ्यास करें',
+      'hi': 'कार ड्राइविंग के नियम और विनियमन सीखें और उनका अभ्यास करें',
     },
     'gjfx8qws': {
       'en': 'Home',
@@ -158,7 +158,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'termes et conditions',
       'hi': 'नियम एवं शर्तें',
     },
-    'gjfx8qws': {
+    '1iumddnr': {
       'en': 'Home',
       'fr': 'Maison',
       'hi': 'घर',
@@ -178,8 +178,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nksr3b94': {
       'en': 'Please enter a valid phone number',
-      'fr': '',
-      'hi': '',
+      'fr': 's\'il vous plaît entrer un numéro de téléphone valide',
+      'hi': 'एक मान्य दूरभाष क्रमांक दर्ज करे',
     },
     '1kkysqtx': {
       'en': 'Please choose an option from the dropdown',
@@ -212,7 +212,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Veuillez saisir vos coordonnées pour\nvous inscrire et créer un compte',
       'hi': 'कृपया साइन अप करने और खाता बनाने के लिए अपना विवरण दर्ज करें',
     },
-    'gjfx8qws': {
+    '3cavmayb': {
       'en': 'Home',
       'fr': 'Maison',
       'hi': 'घर',
@@ -225,17 +225,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Numéro de téléphone',
       'hi': 'फ़ोन नंबर',
     },
-    '7e3lsrnc': {
+    'fajjjy6q': {
       'en': 'Field is required',
       'fr': 'Champ requis',
       'hi': 'ये स्थान भरा जाना है',
     },
     'rxlq0jy4': {
       'en': 'Please enter a valid phone number',
-      'fr': '',
-      'hi': '',
+      'fr': 's\'il vous plaît entrer un numéro de téléphone valide',
+      'hi': 'एक मान्य दूरभाष क्रमांक दर्ज करे',
     },
-    '1kkysqtx': {
+    'd5pldhbt': {
       'en': 'Please choose an option from the dropdown',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
       'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
@@ -294,7 +294,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Vérifier',
       'hi': 'सत्यापित करें',
     },
-    'gjfx8qws': {
+    'szagyyfa': {
       'en': 'Home',
       'fr': 'Maison',
       'hi': 'घर',
@@ -306,6 +306,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Full Name',
       'fr': 'Nom et prénom',
       'hi': 'पूरा नाम',
+    },
+    'h7a7863q': {
+      'en': 'DOB',
+      'fr': 'Date de naissance',
+      'hi': 'जन्म तिथि',
     },
     '2z6z61uw': {
       'en': 'Male',
@@ -372,11 +377,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'RTO',
       'hi': 'आरटीओ',
     },
-    'b8ynli2u': {
-      'en': 'Select DOB',
-      'fr': 'Sélectionnez la date de naissance',
-      'hi': 'DOB चुनें',
-    },
     '1eccnym6': {
       'en': 'SAVE',
       'fr': 'SAUVEGARDER',
@@ -388,6 +388,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'ये स्थान भरा जाना है',
     },
     'jvxnnfwg': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+      'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
+    },
+    'h1smf985': {
+      'en': 'Field is required',
+      'fr': 'Champ requis',
+      'hi': 'ये स्थान भरा जाना है',
+    },
+    '3n7lemul': {
       'en': 'Please choose an option from the dropdown',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
       'hi': 'कृपया ड्रॉपडाउन से कोई विकल्प चुनें',
@@ -460,7 +470,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Historique des tests',
       'hi': 'टेस्ट इतिहास',
     },
-    'gjfx8qws': {
+    'o2ovejtx': {
       'en': 'Home',
       'fr': 'Maison',
       'hi': 'घर',
@@ -478,7 +488,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Répondre',
       'hi': 'उत्तर',
     },
-    'gjfx8qws': {
+    'scht4frz': {
       'en': 'Home',
       'fr': 'Maison',
       'hi': 'घर',
@@ -498,8 +508,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'uqqoyhl4': {
       'en': '/',
-      'fr': '',
-      'hi': '',
+      'fr': '/',
+      'hi': '/',
     },
     'fo84dm7s': {
       'en': 'Finish the test ',
@@ -508,8 +518,83 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'i0acdmwj': {
       'en': 'Home',
-      'fr': '',
-      'hi': '',
+      'fr': 'Maison',
+      'hi': 'घर',
+    },
+  },
+  // Result
+  {
+    'n4vowebq': {
+      'en': 'Home',
+      'fr': 'Maison',
+      'hi': 'घर',
+    },
+    'tvhvlb20': {
+      'en': 'Result',
+      'fr': 'Résultat',
+      'hi': 'परिणाम',
+    },
+    'fwc46gk9': {
+      'en': 'Time',
+      'fr': 'Temps',
+      'hi': 'समय',
+    },
+    'ot5n6uup': {
+      'en': 'Check Results',
+      'fr': 'Vérifier les résultats',
+      'hi': 'परिणाम देखें',
+    },
+    '0zm1u6ng': {
+      'en': 'Home',
+      'fr': 'Maison',
+      'hi': 'घर',
+    },
+  },
+  // RoadSign
+  {
+    '493bjqqm': {
+      'en': 'Road Signs',
+      'fr': 'Panneaux routiers',
+      'hi': 'सड़क के संकेत',
+    },
+    'wz115kdt': {
+      'en': 'Home',
+      'fr': 'Maison',
+      'hi': 'घर',
+    },
+  },
+  // signs
+  {
+    '31s24ceb': {
+      'en': 'Home',
+      'fr': 'Maison',
+      'hi': 'घर',
+    },
+  },
+  // Study
+  {
+    '4cmcxx7n': {
+      'en': 'Study',
+      'fr': 'Étude',
+      'hi': 'अध्ययन',
+    },
+    'qar0xn6v': {
+      'en': 'Home',
+      'fr': 'Maison',
+      'hi': 'घर',
+    },
+  },
+  // History
+  {
+    'nla7vq15': {
+      'en': 'Test History',
+      'fr': 'Historique des tests',
+      'hi': 'टेस्ट इतिहास',
+    },
+    'jevweegz': {
+      'en': 'Home',
+      'fr': 'Maison',
+      'hi': 'घर',
     },
   },
   // Test
@@ -533,6 +618,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'RTO',
       'fr': 'RTO',
       'hi': 'आरटीओ',
+    },
+  },
+  // testCard
+  {
+    '0xi71yxd': {
+      'en': 'Status of Test',
+      'fr': 'État du test',
+      'hi': 'टेस्ट की स्थिति',
+    },
+    'fvuw9kg6': {
+      'en': 'Number of Correct Answers',
+      'fr': 'Nombre de réponses correctes',
+      'hi': 'सही उत्तरों की संख्या',
+    },
+    'ax9vym0a': {
+      'en': 'Total Learning Time',
+      'fr': 'Durée totale d\'apprentissage',
+      'hi': 'कुल सीखने का समय',
     },
   },
   // Miscellaneous

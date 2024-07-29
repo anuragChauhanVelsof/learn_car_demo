@@ -73,13 +73,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomeWidget() : const SplashScreenWidget(),
+          appStateNotifier.loggedIn ? const HomeWidget() : const UserAccessWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomeWidget() : const SplashScreenWidget(),
+              appStateNotifier.loggedIn ? const HomeWidget() : const UserAccessWidget(),
         ),
         FFRoute(
           name: 'SplashScreen',
@@ -130,8 +130,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'TestQuestions',
           path: '/testQuestions',
           builder: (context, params) => const TestQuestionsWidget(),
+        ),
+        FFRoute(
+          name: 'Result',
+          path: '/result',
+          builder: (context, params) => ResultWidget(
+            score: params.getParam(
+              'score',
+              ParamType.String,
+            ),
+            time: params.getParam(
+              'time',
+              ParamType.String,
+            ),
+            status: params.getParam(
+              'status',
+              ParamType.bool,
+            ),
+            porgressValue: params.getParam(
+              'porgressValue',
+              ParamType.double,
+            ),
+            progressPercentage: params.getParam(
+              'progressPercentage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'RoadSign',
+          path: '/roadSign',
+          builder: (context, params) => const RoadSignWidget(),
+        ),
+        FFRoute(
+          name: 'signs',
+          path: '/Signs',
+          builder: (context, params) => SignsWidget(
+            title: params.getParam(
+              'title',
+              ParamType.String,
+            ),
+            id: params.getParam(
+              'id',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Study',
+          path: '/study',
+          builder: (context, params) => const StudyWidget(),
+        ),
+        FFRoute(
+          name: 'History',
+          path: '/history',
+          builder: (context, params) => const HistoryWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -298,7 +354,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/SplashScreen';
+            return '/userAccess';
           }
           return null;
         },
@@ -312,17 +368,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      child: Image.asset(
+                        'assets/images/Screenshot_4.png',
+                        fit: BoxFit.contain,
                       ),
-                    ),
-                  ),
-                )
+                    )
               : page;
 
           final transitionInfo = state.transitionInfo;

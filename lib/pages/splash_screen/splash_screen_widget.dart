@@ -134,8 +134,8 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/Group_5222.png',
-                            width: 300.0,
-                            height: 200.0,
+                            width: 100.0,
+                            height: 100.0,
                             fit: BoxFit.contain,
                           ),
                         ),
