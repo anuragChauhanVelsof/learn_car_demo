@@ -92,7 +92,10 @@ class _HistoryWidgetState extends State<HistoryWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.safePop();
+                                  if (Navigator.of(context).canPop()) {
+                                    context.pop();
+                                  }
+                                  context.pushNamed('Home');
                                 },
                                 child: Icon(
                                   Icons.chevron_left,
