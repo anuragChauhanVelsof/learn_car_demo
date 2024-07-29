@@ -139,7 +139,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                             children: [
                               Form(
                                 key: _model.formKey,
-                                autovalidateMode: AutovalidateMode.always,
+                                autovalidateMode: AutovalidateMode.disabled,
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       30.0, 30.0, 30.0, 0.0),
