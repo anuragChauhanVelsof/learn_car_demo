@@ -307,10 +307,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Nom et prénom',
       'hi': 'पूरा नाम',
     },
-    'h7a7863q': {
+    'vhayy3qj': {
       'en': 'DOB',
-      'fr': 'Date de naissance',
-      'hi': 'जन्म तिथि',
+      'fr': '',
+      'hi': '',
     },
     '2z6z61uw': {
       'en': 'Male',
