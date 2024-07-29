@@ -109,6 +109,7 @@ class _PracticeQuestionsWidgetState extends State<PracticeQuestionsWidget>
     return FutureBuilder<List<QuestionsRow>>(
       future: QuestionsTable().queryRows(
         queryFn: (q) => q,
+        limit: 25,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.

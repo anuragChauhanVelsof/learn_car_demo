@@ -167,7 +167,7 @@ class _ResultWidgetState extends State<ResultWidget> {
                                   Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
-                                      widget.status!
+                                      !widget.status!
                                           ? 'Failed'
                                           : 'Congratulations',
                                       style: FlutterFlowTheme.of(context)
@@ -210,6 +210,7 @@ class _ResultWidgetState extends State<ResultWidget> {
                                                       .override(
                                                 fontFamily: 'Roboto',
                                                 color: const Color(0xFF14181B),
+                                                fontSize: 15.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w900,
                                                 shadows: [
@@ -233,7 +234,7 @@ class _ResultWidgetState extends State<ResultWidget> {
                                     alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       widget.status!
-                                          ? 'Driving Test Failed'
+                                          ? 'Driving Test Passed'
                                           : 'Drving Test Failed',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

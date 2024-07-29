@@ -93,7 +93,7 @@ double getTestResultProgressValue(
 }
 
 String getTimeUsed(int time) {
-  int leftTime = 600000 - time;
+  int leftTime = 1500000 - time;
   int minutes = leftTime ~/ 60000;
   int seconds = (leftTime % 60000) ~/ 1000;
 
