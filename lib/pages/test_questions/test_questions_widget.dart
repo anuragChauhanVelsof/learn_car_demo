@@ -1092,18 +1092,128 @@ class _TestQuestionsWidgetState extends State<TestQuestionsWidget>
                                         child: Align(
                                           alignment:
                                               const AlignmentDirectional(0.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'fo84dm7s' /* Finish the test  */,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title: const Text(
+                                                                  'Finsh the Test now!'),
+                                                              content: const Text(
+                                                                  'Do you really want to finish it now?'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: const Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: const Text(
+                                                                      'Confirm'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                  'Result',
+                                                  queryParameters: {
+                                                    'score': serializeParam(
+                                                      functions.getScoresString(
+                                                          testQuestionsQuestionsRowList
+                                                              .toList(),
+                                                          _model.selecedtAsnwers
+                                                              .toList()),
+                                                      ParamType.String,
+                                                    ),
+                                                    'time': serializeParam(
+                                                      functions.getTimeUsed(_model
+                                                          .timerMilliseconds),
+                                                      ParamType.String,
+                                                    ),
+                                                    'status': serializeParam(
+                                                      functions.getTestResult(
+                                                          testQuestionsQuestionsRowList
+                                                              .toList(),
+                                                          _model.selecedtAsnwers
+                                                              .toList()),
+                                                      ParamType.bool,
+                                                    ),
+                                                    'porgressValue':
+                                                        serializeParam(
+                                                      functions.getTestResultProgressValue(
+                                                          testQuestionsQuestionsRowList
+                                                              .toList(),
+                                                          _model.selecedtAsnwers
+                                                              .toList()),
+                                                      ParamType.double,
+                                                    ),
+                                                    'progressPercentage':
+                                                        serializeParam(
+                                                      functions.getTestResultPercentage(
+                                                          testQuestionsQuestionsRowList
+                                                              .toList(),
+                                                          _model.selecedtAsnwers
+                                                              .toList()),
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+
+                                                await TestHistoryTable()
+                                                    .insert({
+                                                  'status': functions.getTestResult(
+                                                      testQuestionsQuestionsRowList
+                                                          .toList(),
+                                                      _model.selecedtAsnwers
+                                                          .toList()),
+                                                  'score':
+                                                      functions.getScoresString(
+                                                          testQuestionsQuestionsRowList
+                                                              .toList(),
+                                                          _model.selecedtAsnwers
+                                                              .toList()),
+                                                  'time_taken': functions
+                                                      .getTimeUsed(_model
+                                                          .timerMilliseconds),
+                                                  'user_id': currentUserUid,
+                                                });
+                                              }
+                                            },
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'fo84dm7s' /* Finish the test  */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                      ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  letterSpacing: 0.0,
-                                                  decoration:
-                                                      TextDecoration.underline,
-                                                ),
                                           ),
                                         ),
                                       ),

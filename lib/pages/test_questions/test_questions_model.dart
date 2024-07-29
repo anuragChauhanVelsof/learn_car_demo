@@ -35,10 +35,10 @@ class TestQuestionsModel extends FlutterFlowModel<TestQuestionsWidget> {
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
   // State field(s) for Timer widget.
-  final timerInitialTimeMs = 600000;
-  int timerMilliseconds = 600000;
+  final timerInitialTimeMs = 1500000;
+  int timerMilliseconds = 1500000;
   String timerValue = StopWatchTimer.getDisplayTime(
-    600000,
+    1500000,
     hours: false,
     milliSecond: false,
   );

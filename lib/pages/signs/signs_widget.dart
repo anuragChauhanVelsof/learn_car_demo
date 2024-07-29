@@ -110,7 +110,8 @@ class _SignsWidgetState extends State<SignsWidget>
                               Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
-                                  widget.title!,
+                                  widget.title!
+                                      .maybeHandleOverflow(maxChars: 15),
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(

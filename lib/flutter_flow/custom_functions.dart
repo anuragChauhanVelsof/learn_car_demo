@@ -28,6 +28,9 @@ String? getScoresString(
 ) {
   int score = 0;
   for (int i = 0; i < answers.length; i++) {
+    if (selectedAnswers.length < i + 1) {
+      selectedAnswers.add('""');
+    }
     if (selectedAnswers[i] == answers[i].correctOption) {
       score++;
     }
@@ -41,6 +44,9 @@ bool getTestResult(
 ) {
   int score = 0;
   for (int i = 0; i < questions.length; i++) {
+    if (answers.length < i + 1) {
+      answers.add('""');
+    }
     if (answers[i] == questions[i].correctOption) {
       score++;
     }
@@ -54,6 +60,9 @@ String getTestResultPercentage(
 ) {
   int score = 0;
   for (int i = 0; i < questions.length; i++) {
+    if (answers.length < i + 1) {
+      answers.add('""');
+    }
     if (answers[i] == questions[i].correctOption) {
       score++;
     }
@@ -70,6 +79,9 @@ double getTestResultProgressValue(
 ) {
   int score = 0;
   for (int i = 0; i < questions.length; i++) {
+    if (answers.length < i + 1) {
+      answers.add('""');
+    }
     if (answers[i] == questions[i].correctOption) {
       score++;
     }

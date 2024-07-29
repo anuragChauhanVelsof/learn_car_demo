@@ -319,6 +319,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget> {
                                             );
                                           },
                                         );
+                                        _model.timerController.onResetTimer();
                                       } else {
                                         await showDialog(
                                           context: context,
